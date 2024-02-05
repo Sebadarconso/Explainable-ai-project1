@@ -60,22 +60,12 @@ def compute_gradients(interpolated_images, model, target_class_idx):
 	
 	return gradients
 	
-# def compute_gradients(interpolated_images, target_class_idx, model):
-
-# 	images = interpolated_images.clone().detach().requires_grad_(True)
-# 	logits = model(images.squeeze(0).to(device))
-# 	probs = F.softmax(logits, dim=-1)[:, target_class_idx]
-	
-# 	model.zero_grad()
-# 	probs.backward()
-	
-# 	return images.grad
-	
 # Integral approximation
 def integral_approximation(gradients):
 	grads = (gradients[:-1] + gradients[1:]) / torch.Tensor([2.0])
-	avg_grads = torch.mean(grads, dim=0)
-	return avg_grads
+	# avg_grads = torch.mean(grads, dim=0)
+	avg_grads = np.average(grads.detach(), axis=0)
+	return torch.tensor(avg_grads)
 
 # Single batch calculation
 def one_batch(baseline, image, alpha_batch, target_class_idx, model):
