@@ -1,0 +1,4 @@
+# Ignore example_folder
+dataset/
+plots/
+checkpoint/
