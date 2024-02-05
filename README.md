@@ -6,8 +6,7 @@ This project focuses on developing an Explainable AI (XAI) solution for image cl
 ## Features
 
 ### 1. Image Classification with 2D CNN
-   - Implement a 2D Convolutional Neural Network for accurate image classification.
-   - Utilize state-of-the-art deep learning techniques to enhance classification performance.
+   - Implement a 2D Convolutional Neural Network for  image classification.
 
 ### 2. Explainable AI Algorithms
    - Integrate two eXplainable AI algorithms to interpret and explain the decision-making process.
