@@ -49,7 +49,7 @@ def plot_interpolated_images(interpolate_images, m_steps, step):
 # compute gradients
 def compute_gradients(interpolated_images, model, target_class_idx):
 	gradients = []
-	model.eval()
+	model.zero_grad() # before was model.eval()
 	images = interpolated_images.clone().detach().requires_grad_(True)
 	output = model(images.squeeze(0).to(device))
 	probs = F.softmax(output, dim=1)[: , target_class_idx]
