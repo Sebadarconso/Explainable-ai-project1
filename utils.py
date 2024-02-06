@@ -56,7 +56,7 @@ def compute_gradients(interpolated_images, model, target_class_idx):
 	# probs = torch.max(probs)
 	gradients = torch.autograd.grad(probs, images, 
 								grad_outputs=torch.ones_like(probs),
-								retain_graph=True, create_graph=True)[0]
+							 	create_graph=True)[0]
 	
 	return gradients
 	
@@ -64,7 +64,7 @@ def compute_gradients(interpolated_images, model, target_class_idx):
 def integral_approximation(gradients):
 	grads = (gradients[:-1] + gradients[1:]) / torch.Tensor([2.0])
 	# avg_grads = torch.mean(grads, dim=0)
-	avg_grads = np.average(grads.detach(), axis=0)
+	avg_grads = torch.mean(grads.detach(), axis=0)
 	return torch.tensor(avg_grads)
 
 # Single batch calculation
