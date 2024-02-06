@@ -65,7 +65,7 @@ def integral_approximation(gradients):
 	grads = (gradients[:-1] + gradients[1:]) / torch.Tensor([2.0])
 	# avg_grads = torch.mean(grads, dim=0)
 	avg_grads = torch.mean(grads.detach(), axis=0)
-	return torch.tensor(avg_grads)
+	return avg_grads
 
 # Single batch calculation
 def one_batch(baseline, image, alpha_batch, target_class_idx, model):
