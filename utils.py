@@ -101,7 +101,7 @@ def integrated_gradients(baseline, image, target_class_idx, model, m_steps, batc
 	# Concatenate path gradients together row-wise into a single tensor.
 	total_gradients = torch.cat(gradient_batches, dim=0)
 
-	# Integral approximation through averaging gradients.
+	# Integral approximation through trapezoid rule.
 	avg_gradients = integral_approximation(gradients=total_gradients)
 
 	# Scale integrated gradients with respect to input.
